@@ -13,6 +13,7 @@ export default function Movie({ title, id, poster_path, release_date }) {
           alt={title}
           width={500}
           height={300}
+          priority
         />
       </Link>
     </div>

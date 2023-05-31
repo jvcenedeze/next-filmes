@@ -45,12 +45,10 @@ export default async function MovieDetail({ params }) {
           Genres:<> </>
           {res.genres.map(
             (genre: { name: String; id: React.Key }, index: Number) => (
-              <>
-                <a href={`/genre/${genre.name}/${genre.id}`} key={genre.id}>
-                  {genre.name}
-                </a>
+              <span key={genre.id}>
+                <a href={`/genre/${genre.name}/${genre.id}`}>{genre.name}</a>
                 {index < res.genres.length - 1 ? <>, </> : null}
-              </>
+              </span>
             )
           )}
         </h2>

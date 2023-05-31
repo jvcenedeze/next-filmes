@@ -58,7 +58,7 @@ export default async function MovieDetail({ params }) {
           className="my-12 w-full"
           src={imagePath + res.backdrop_path}
           width={1000}
-          height={1400}
+          height={600}
           alt={res.title}
           priority
         />

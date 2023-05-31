@@ -1,19 +1,19 @@
 import Image from "next/image";
 interface ResResults {
-  adult: Boolean;
-  backdrop_path: String;
-  genre_ids: Array<Number>;
-  id: Number;
-  original_language: String;
-  original_title: String;
-  overview: String;
-  popularity: Number;
-  poster_path: String;
-  release_date: String;
-  title: String;
-  video: Boolean;
-  vote_average: Number;
-  vote_count: Number;
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: Array<number>;
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 }
 
 export async function generateStaticParams() {
@@ -43,7 +43,7 @@ export default async function MovieDetail({ params }) {
         <h2>
           Genres:<> </>
           {res.genres.map(
-            (genre: { name: String; id: React.Key }, index: Number) => (
+            (genre: { name: string; id: React.Key }, index: number) => (
               <span key={genre.id}>
                 <a href={`/genre/${genre.name}/${genre.id}`}>{genre.name}</a>
                 {index < res.genres.length - 1 ? <>, </> : null}

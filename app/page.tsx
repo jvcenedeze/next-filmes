@@ -1,20 +1,20 @@
 import Movie from "./Movie";
 
 interface MovieResults {
-  adult: Boolean;
-  backdrop_path: String;
-  genre_ids: Array<Number>;
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: Array<number>;
   id: React.Key;
-  original_language: String;
-  original_title: String;
-  overview: String;
-  popularity: Number;
-  poster_path: String;
-  release_date: String;
-  title: String;
-  video: Boolean;
-  vote_average: Number;
-  vote_count: Number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 }
 
 export default async function Home() {

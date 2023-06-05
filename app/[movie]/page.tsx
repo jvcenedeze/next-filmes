@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+
 interface ResResults {
   adult: boolean;
   backdrop_path: string;
@@ -45,7 +47,12 @@ export default async function MovieDetail({ params }) {
           {res.genres.map(
             (genre: { name: string; id: React.Key }, index: number) => (
               <span key={genre.id}>
-                <a href={`/genre/${genre.name}/${genre.id}`}>{genre.name}</a>
+                <Link
+                  href={`/genre/${genre.name}/${genre.id}`}
+                  className="hover:underline underline-offset-2"
+                >
+                  {genre.name}
+                </Link>
                 {index < res.genres.length - 1 ? <>, </> : null}
               </span>
             )
@@ -55,7 +62,7 @@ export default async function MovieDetail({ params }) {
           {res.status}
         </h2>
         <Image
-          className="my-12 w-full"
+          className="my-6 w-full"
           src={imagePath + res.backdrop_path}
           width={1000}
           height={600}

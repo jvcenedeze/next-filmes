@@ -10,6 +10,10 @@ readdirSync("./routes").map((file) =>
   app.use("/", require(`./routes/${file}`))
 );
 
+app.get("/", (req, res) => {
+  res.send("Main route!");
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });

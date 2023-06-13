@@ -1,28 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 export default function Search() {
   const [search, setSearch] = useState("");
+  const router = useRouter();
+  const onSearch = (event: React.FormEvent) => {
+    event.preventDefault();
+    const encodedSearchQuery = encodeURI(search);
+    router.push(`/search?q=${encodedSearchQuery}`);
+  };
   return (
     <div className="w-full relative inline-block flex items-center">
-      <input
-        type="text"
-        className="
-          w-full
-          border-2
-          py-2
-          px-3
-          rounded-lg
-          text-slate-700
-          text-black
-          focus:outline-none
-          focus:border-gray-300
-        "
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
-      <div className="absolute right-3 text-slate-700 cursor-pointer">
+      <form onSubmit={onSearch} className="w-full">
+        <input
+          type="text"
+          className="
+            w-full
+            border-2
+            py-2
+            px-3
+            rounded-lg
+            text-slate-700
+            text-black
+            focus:outline-none
+            focus:border-gray-300
+          "
+          placeholder="Search movie..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </form>
+      <div
+        className="absolute right-3 text-slate-700 cursor-pointer"
+        onClick={onSearch}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="1em"

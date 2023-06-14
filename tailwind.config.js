@@ -16,6 +16,12 @@ module.exports = {
       gridTemplateColumns: {
         fluid: "repeat(auto-fit,minmax(15rem,1fr))",
       },
+      aspectRatio: {
+        "2/3": "2 / 3",
+      },
+      spacing: {
+        26: "6.5rem",
+      },
     },
   },
   plugins: [],

@@ -8,6 +8,7 @@ export default function Search() {
   const router = useRouter();
   const onSearch = (event: React.FormEvent) => {
     event.preventDefault();
+    if (search === "") return;
     const encodedSearchQuery = encodeURI(search);
     router.push(`/search?q=${encodedSearchQuery}`);
   };

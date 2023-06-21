@@ -61,7 +61,7 @@ export default function GenreMovies() {
                 ? "Results for:"
                 : "No results found for:"}
             </span>{" "}
-            {searchQuery}
+            {`"${searchQuery}"`}
           </h1>
           <div className="grid gap-16 grid-cols-fluid">
             {data?.results && data.results.length > 0

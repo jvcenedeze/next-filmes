@@ -25,8 +25,8 @@ export default async function GenreMovies({ params }) {
   const res = await data.json();
   return (
     <div>
-      <h1 className="text-4xl mb-8">{genre}</h1>
-      <div className="grid gap-16 grid-cols-fluid">
+      <h1 className="text-2xl sm:text-4xl mb-6 sm:mb-8">{genre}</h1>
+      <div className="grid gap-10 sm:gap-16 grid-cols-fluid">
         {res.results.map((movie: MovieResults) => (
           <Movie
             key={movie.id}

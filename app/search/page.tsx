@@ -55,7 +55,7 @@ export default function GenreMovies() {
         </div>
       ) : (
         <>
-          <h1 className="text-2xl mb-8">
+          <h1 className="text-2xl mb-6 sm:mb-8">
             <span className="text-lg">
               {data?.results && data.results.length > 0
                 ? "Results for:"

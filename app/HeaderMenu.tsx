@@ -76,7 +76,7 @@ export default function HeaderMenu() {
     <div className="h-full">
       <Button
         id="basic-button"
-        className="h-full text-base font-medium hidden sm:block"
+        className="h-full text-base font-medium !hidden sm:!block"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
@@ -115,7 +115,7 @@ export default function HeaderMenu() {
       </Menu>
 
       <Button
-        className="h-full text-base font-medium block sm:hidden"
+        className="h-full text-base font-medium !block sm:!hidden"
         onClick={toggleGenresListMobile}
         sx={{
           color: "#ffffff",

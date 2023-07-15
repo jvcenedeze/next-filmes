@@ -19,13 +19,14 @@ interface MovieResults {
 
 export default async function GenreMovies({ params }) {
   const { genre, id } = params;
+  const decodedGenre = decodeURIComponent(genre);
   const data = await fetch(
     `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&with_genres=${id}`
   );
   const res = await data.json();
   return (
     <div>
-      <h1 className="text-2xl sm:text-4xl mb-6 sm:mb-8">{genre}</h1>
+      <h1 className="text-2xl sm:text-4xl mb-6 sm:mb-8">{decodedGenre}</h1>
       <div className="grid gap-10 sm:gap-16 grid-cols-fluid">
         {res.results.map((movie: MovieResults) => (
           <Movie

@@ -4,6 +4,13 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
+import { Menu as MenuIcon } from "@mui/icons-material";
 
 export default function HeaderMenu() {
   const router = useRouter();
@@ -29,24 +36,51 @@ export default function HeaderMenu() {
     { id: 37, name: "Western" },
   ]);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const openGenresList = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = (genre: null | { id: React.Key; name: string }) => {
-    setAnchorEl(null);
+  const closeGenresList = (genre: null | { id: React.Key; name: string }) => {
+    if (!mobileOpen) setAnchorEl(null);
+    else setMobileOpen(false);
     if (genre) router.push(`/genre/${genre.name}/${genre.id}`);
+  };
+  const drawer = (
+    <List>
+      <ListItemText
+        primary="Genres"
+        primaryTypographyProps={{
+          fontWeight: "bold",
+          paddingLeft: "10px",
+        }}
+      />
+      <Divider />
+      {genres.map((genre) => (
+        <ListItem key={genre.id} disablePadding>
+          <ListItemButton dense>
+            <ListItemText
+              primary={genre.name}
+              onClick={() => closeGenresList(genre)}
+            />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
+  );
+  const toggleGenresListMobile = () => {
+    setMobileOpen(!mobileOpen);
   };
 
   return (
     <div className="h-full">
       <Button
         id="basic-button"
-        className="h-full font-medium"
+        className="h-full text-base font-medium hidden sm:block"
         aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
         aria-expanded={open ? "true" : undefined}
-        onClick={handleClick}
+        onClick={openGenresList}
         sx={{
           color: "#ffffff",
         }}
@@ -57,7 +91,7 @@ export default function HeaderMenu() {
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
-        onClose={() => handleClose(null)}
+        onClose={() => closeGenresList(null)}
         MenuListProps={{
           "aria-labelledby": "basic-button",
         }}
@@ -73,12 +107,38 @@ export default function HeaderMenu() {
       >
         {genres
           ? genres.map((genre) => (
-              <MenuItem onClick={() => handleClose(genre)} key={genre.id}>
+              <MenuItem onClick={() => closeGenresList(genre)} key={genre.id}>
                 {genre.name}
               </MenuItem>
             ))
           : null}
       </Menu>
+
+      <Button
+        className="h-full text-base font-medium block sm:hidden"
+        onClick={toggleGenresListMobile}
+        sx={{
+          color: "#ffffff",
+        }}
+      >
+        <MenuIcon />
+      </Button>
+      <Drawer
+        variant="temporary"
+        anchor="right"
+        open={mobileOpen}
+        onClose={toggleGenresListMobile}
+        ModalProps={{
+          keepMounted: true,
+        }}
+        sx={{
+          display: { xs: "block", sm: "none" },
+          "& .MuiDrawer-paper": { boxSizing: "border-box", width: "50vw" },
+        }}
+        disableScrollLock
+      >
+        {drawer}
+      </Drawer>
     </div>
   );
 }

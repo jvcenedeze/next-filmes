@@ -48,7 +48,7 @@ export default function GenreMovies() {
   return (
     <div>
       {loading ? (
-        <div className="animate-pulse grid gap-16 grid-cols-fluid mt-26">
+        <div className="animate-pulse grid gap-10 sm:gap-16 grid-cols-fluid">
           {loadingComponents.map((_, i) => (
             <LoadingMovie key={i} />
           ))}
@@ -63,7 +63,7 @@ export default function GenreMovies() {
             </span>{" "}
             {`"${searchQuery}"`}
           </h1>
-          <div className="grid gap-16 grid-cols-fluid">
+          <div className="grid gap-10 sm:gap-16 grid-cols-fluid">
             {data?.results && data.results.length > 0
               ? data.results.map((movie: MovieResults) => (
                   <Movie

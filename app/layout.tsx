@@ -14,7 +14,9 @@ export default function RootLayout({ children }) {
       <head />
       <body className={`${montserrat.className}`}>
         <Header />
-        <main className="mx-12 sm:mx-16 lg:mx-32 my-10">{children}</main>
+        <main className="mt-16 sm:mt-20 mx-12 sm:mx-16 lg:mx-32 my-10">
+          {children}
+        </main>
       </body>
     </html>
   );

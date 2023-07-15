@@ -23,7 +23,7 @@ export default async function Home() {
   );
   const res = await data.json();
   return (
-    <div className="grid gap-16 grid-cols-fluid">
+    <div className="grid gap-10 sm:gap-16 grid-cols-fluid">
       {res.results.map((movie: MovieResults) => (
         <Movie
           key={movie.id}

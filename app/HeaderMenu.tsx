@@ -1,4 +1,5 @@
 "use client";
+import SearchInput from "./SearchInput";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -48,6 +49,10 @@ export default function HeaderMenu() {
   };
   const drawer = (
     <List>
+      <div className="p-2">
+        <SearchInput />
+      </div>
+      <Divider />
       <ListItemText
         primary="Genres"
         primaryTypographyProps={{

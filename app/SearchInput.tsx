@@ -21,12 +21,13 @@ export default function Search() {
     <div className="w-full relative inline-block flex items-center">
       <form onSubmit={onSearch} className="w-full">
         <input
-          type="search"
+          type="text"
           className="
             w-full
             border-2
             py-2
-            px-3
+            pl-3
+            pr-11
             rounded-lg
             text-slate-700
             text-black

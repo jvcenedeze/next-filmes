@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Rating from "../../components/Rating";
+import Popularity from "../../components/Popularity";
 
 interface BelongsToCollection {
   id: number;
@@ -89,9 +90,11 @@ export default async function MovieDetail({ params }) {
   );
   const formatedRuntime = () => {
     const time = res.runtime;
-    const hours = Math.floor(time / 60);
+    if (!time) return "-";
     const minutes = time % 60;
     const formattedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+    if (time < 60) return `${formattedMinutes}m`;
+    const hours = Math.floor(time / 60);
     return `${hours}h${formattedMinutes}m`;
   };
   return (
@@ -116,8 +119,11 @@ export default async function MovieDetail({ params }) {
             )
           )}
         </h2>
-        <div className="mt-1">
+        <div className="mt-0.5">
           <Rating rating={voteRatingNumber} />
+        </div>
+        <div>
+          <Popularity popularity={res.popularity} />
         </div>
         <h2 className="text-sm bg-green-600 inline-block my-2 py-2 px-4 rounded-md">
           {res.status}

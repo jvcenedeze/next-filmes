@@ -2,7 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import LoadingMovie from "../LoadingMovie";
+import LoadingMovie from "../../components/LoadingMovie";
 import Movie from "../../components/Movie";
 
 interface Movies {

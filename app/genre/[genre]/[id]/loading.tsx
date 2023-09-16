@@ -1,4 +1,4 @@
-import LoadingMovie from "../../../LoadingMovie";
+import LoadingMovie from "../../../../components/LoadingMovie";
 
 export default function LoadingGenre() {
   const loadingComponents = Array(20).fill("");

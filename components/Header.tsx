@@ -11,7 +11,7 @@ const josefinSans = Josefin_Sans({
 
 export default function Header() {
   return (
-    <nav className="flex flex-row py-1 sm:py-2 pl-16 sm:pl-0 top-0 right-0 left-0 fixed bg-black">
+    <nav className="flex flex-row py-1 sm:py-2 pl-16 sm:pl-0 top-0 right-0 left-0 fixed bg-black z-50">
       <Link
         className={`${josefinSans.className} ml-auto sm:ml-16 lg:ml-32 sm:mx-auto sm:mr-0 mt-auto text-2xl sm:text-4xl`}
         href="/"

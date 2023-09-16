@@ -18,6 +18,10 @@ module.exports = {
       },
       aspectRatio: {
         "2/3": "2 / 3",
+        "2/1": "2 / 1",
+      },
+      minWidth: {
+        36: "9rem",
       },
       spacing: {
         26: "6.5rem",

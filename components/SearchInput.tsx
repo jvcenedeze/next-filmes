@@ -33,6 +33,7 @@ export default function Search() {
             text-black
             focus:outline-none
             focus:border-gray-300
+            bg-white
           "
           placeholder="Search movie..."
           value={search}

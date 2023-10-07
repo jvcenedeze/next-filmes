@@ -99,45 +99,43 @@ export default async function MovieDetail({ params }) {
   };
   return (
     <div>
-      <div>
-        <h2 className="text-2xl">{res.title}</h2>
-        <h2 className="text-lg">{formatedReleaseDate}</h2>
-        <h2>Runtime: {formatedRuntime()}</h2>
-        <h2>
-          Genres:<> </>
-          {res.genres.map(
-            (genre: { name: string; id: React.Key }, index: number) => (
-              <span key={genre.id}>
-                <Link
-                  href={`/genre/${genre.name}/${genre.id}`}
-                  className="hover:underline underline-offset-2"
-                >
-                  {genre.name}
-                </Link>
-                {index < res.genres.length - 1 ? <>, </> : null}
-              </span>
-            )
-          )}
-        </h2>
-        <div className="mt-0.5">
-          <Rating rating={voteRatingNumber} />
-        </div>
-        <div>
-          <Popularity popularity={res.popularity} />
-        </div>
-        <h2 className="text-sm bg-green-600 inline-block my-2 py-2 px-4 rounded-md">
-          {res.status}
-        </h2>
-        <Image
-          className="my-6 w-full"
-          src={imagePath + res.backdrop_path}
-          width={1000}
-          height={600}
-          alt={res.title}
-          priority
-        />
-        <p>{res.overview}</p>
+      <h2 className="text-2xl">{res.title}</h2>
+      <h2 className="text-lg">{formatedReleaseDate}</h2>
+      <h2>Runtime: {formatedRuntime()}</h2>
+      <h2>
+        Genres:<> </>
+        {res.genres.map(
+          (genre: { name: string; id: React.Key }, index: number) => (
+            <span key={genre.id}>
+              <Link
+                href={`/genre/${genre.name}/${genre.id}`}
+                className="hover:underline underline-offset-2"
+              >
+                {genre.name}
+              </Link>
+              {index < res.genres.length - 1 ? <>, </> : null}
+            </span>
+          )
+        )}
+      </h2>
+      <div className="mt-0.5">
+        <Rating rating={voteRatingNumber} />
       </div>
+      <div>
+        <Popularity popularity={res.popularity} />
+      </div>
+      <h2 className="text-sm bg-green-600 inline-block my-2 py-2 px-4 rounded-md">
+        {res.status}
+      </h2>
+      <Image
+        className="my-6 w-full"
+        src={imagePath + res.backdrop_path}
+        width={1000}
+        height={600}
+        alt={res.title}
+        priority
+      />
+      <p>{res.overview}</p>
     </div>
   );
 }
